@@ -24,6 +24,7 @@
     "test": "test"
   },
   "scripts": {
+    "postinstall": "node models/calificaciones",
     "start": "gulp server"
   },
   "dependencies": {

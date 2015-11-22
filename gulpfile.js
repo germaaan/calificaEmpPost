@@ -53,12 +53,6 @@ gulp.task('doc', function() {
     .pipe(gulp.dest('./doc'));
 });
 
-// Observa los archivos pendiente de cambios
-gulp.task('watch', function() {
-  gulp.watch(style, ['sass']);
-  gulp.watch(main, ['build']);
-});
-
 // Tarea por defecto (métodos de generación)
 gulp.task('default', ['doc']);
 

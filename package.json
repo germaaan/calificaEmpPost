@@ -25,7 +25,8 @@
   },
   "scripts": {
     "postinstall": "node models/calificaciones",
-    "start": "gulp server"
+    "start": "gulp server",
+    "test": "gulp test"
   },
   "dependencies": {
     "body-parser": "1.14.1",

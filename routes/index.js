@@ -29,15 +29,12 @@ exports.insert = function(req, res) {
     // Consulta de selección
     var query = client.query("SELECT * FROM calificaciones");
 
-    // Devolvemos los resultados de la consulta de selección
-    query.on('row', function(row) {
-      results.push(row);
-    });
-
-    // Cerramos la conexión y devolvemos los datos
+    // Cerramos la conexión y devolvemos un mensaje de confirmación
     query.on('end', function() {
       done();
-      return res.json(results);
+      res.render('index', {
+        mensaje: "Inserción realizada correctamente"
+      });
     });
   });
 };

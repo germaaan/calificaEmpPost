@@ -39,8 +39,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Acceso
-app.post('/api/v1/calificaciones', index.insert);
-app.get('/api/v1/calificaciones', index.select);
+app.post('/calificaciones', index.insert);
+app.get('/calificaciones', index.select);
+app.put('/calificaciones/:id', index.update);
 
 // Captura errores 404 y los reenvia al manejador de errores
 app.use(function(req, res, next) {

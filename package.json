@@ -1,0 +1,56 @@
+{
+  "name": "califica-empresas-postgresql",
+  "version": "0.1.0",
+  "author": "Germán Martínez Maldonado",
+  "description": "Versión reducida con PostgreSQL de la aplicación de ejemplo calificaEmpresas (https://goo.gl/CdFQbI)",
+  "keywords": [
+    "cloud computing"
+  ],
+  "bugs": {
+    "url": "https://github.com/germaaan/calificaEmpPost/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/germaaan/calificaEmpPost.git"
+  },
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/germaaan/clases-CC-2015-16/tree/master/ejercicios/germaaan/tema_02/",
+  "main": "app.js",
+  "os": [
+    "linux"
+  ],
+  "private": false,
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "gulp server"
+  },
+  "dependencies": {
+    "body-parser": "1.14.1",
+    "cookie-parser": "1.4.0",
+    "express": "4.13.3",
+    "jade": "1.11.0",
+    "morgan": "1.6.1",
+    "pg": "4.4.3",
+    "serve-favicon": "2.3.0"
+  },
+  "devDependencies": {
+    "coveralls": "2.11.4",
+    "gulp": "3.9.0",
+    "gulp-docco": "0.0.4",
+    "gulp-env": "0.2.0",
+    "gulp-istanbul": "0.10.2",
+    "gulp-jshint": "1.12.0",
+    "gulp-mocha": "2.1.3",
+    "gulp-nodemon": "2.0.4",
+    "istanbul": "0.4.0",
+    "mocha": "2.3.3",
+    "should": "7.1.1",
+    "supertest": "1.1.0",
+    "underscore": "1.8.3"
+  },
+  "engines": {
+    "node": "4.2.2"
+  }
+}

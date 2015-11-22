@@ -42,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.post('/calificaciones', index.insert);
 app.get('/calificaciones', index.select);
 app.put('/calificaciones/:id', index.update);
+app.delete('/calificaciones/:id', index.delete);
 
 // Captura errores 404 y los reenvia al manejador de errores
 app.use(function(req, res, next) {

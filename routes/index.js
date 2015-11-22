@@ -3,9 +3,7 @@ var pg = require('pg');
 
 // Inserción de datos
 exports.insert = function(req, res) {
-  var results = [];
-
-  // Obtener datos de petición http
+  // Obtener datos a insertar de la petición http
   var data = {
     empresa: req.body.empresa,
     alumno: req.body.alumno,
@@ -43,13 +41,6 @@ exports.insert = function(req, res) {
 exports.select = function(req, res) {
   var results = [];
 
-  // Obtener datos de petición http
-  var data = {
-    empresa: req.body.empresa,
-    alumno: req.body.alumno,
-    calificacion: req.body.calificacion,
-  };
-
   // Conectar con el cliente PostgreSQL
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     if (err) {
@@ -80,12 +71,10 @@ exports.select = function(req, res) {
 
 // Actualización de datos
 exports.update = function(req, res) {
-  var results = [];
-
-  // Obtener datos de los parámetros de la URL
+  // Obtenemos identificador de los parámetros de la URL
   var id = req.params.id;
 
-  // Obtener datos de petición http
+  // Obtener calificación nueva de petición http
   var data = {
     calificacion: req.body.calificacion,
   };
@@ -112,6 +101,38 @@ exports.update = function(req, res) {
       done();
       res.render('index', {
         mensaje: "Actualización realizada correctamente"
+      });
+    });
+  });
+};
+
+// Borrado de datos
+exports.delete = function(req, res) {
+  // Obtenemos identificador de los parámetros de la URL
+  var id = req.params.id;
+
+  // Conectar con el cliente PostgreSQL
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    if (err) {
+      done();
+      console.log(err);
+      return res.status(500).json({
+        success: false,
+        data: err
+      });
+    }
+
+    // Consulta de Borrado
+    client.query("DELETE FROM calificaciones WHERE id=($1)", [id]);
+
+    // Consulta de selección
+    var query = client.query("SELECT * FROM calificaciones");
+
+    // Cerramos la conexión y devolvemos un mensaje de confirmación
+    query.on('end', function() {
+      done();
+      res.render('index', {
+        mensaje: "Borrado realizado correctamente"
       });
     });
   });
